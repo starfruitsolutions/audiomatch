@@ -15,7 +15,7 @@ def load_audio(file_path, sample_rate):
 # Function to load song and compare using cross-correlation
 def compare(file_path, sample_audio, sample_rate):
 	song_audio = load_audio(file_path, sample_rate)
-	correlation = correlate(song_audio, sample_audio, mode='valid')
+	correlation = correlate(song_audio, sample_audio, mode='valid', method='fft')
 	return file_path, np.max(correlation)
 
 def runComparison(clip_file, song_folder, sample_rate):
