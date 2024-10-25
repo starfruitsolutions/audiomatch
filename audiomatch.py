@@ -7,7 +7,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 # Function to load audio
-def load_audio(file_path, sr=4000):
+def load_audio(file_path, sr=500):
     audio, sr = librosa.load(file_path, sr=sr, dtype='float32')
     return audio, sr
 
@@ -33,10 +33,11 @@ def load_songs_and_compare(folder_path, sample_audio, sample_sr):
             print(f"Song: {song_name}, Correlation: {correlation}")
 
             if correlation > best_correlation:
+                correlation_spread = correlation - best_correlation
                 best_correlation = correlation
                 best_match = song_name
 
-    return best_match, best_correlation
+    return best_match, best_correlation, correlation_spread
 
 # Function to load song and compare using cross-correlation
 def load_and_compare(file_path, sample_audio, sample_sr):
@@ -59,10 +60,12 @@ if __name__ == "__main__":
     sample_audio, sample_sr = load_audio(args.clip_file)
 
     # Load all songs from the folder and compute cross-correlation
-    best_match, best_correlation = load_songs_and_compare(args.songs_folder, sample_audio, sample_sr)
+    best_match, best_correlation, correlation_spread = load_songs_and_compare(args.songs_folder, sample_audio, sample_sr)
 
-    # Output the best matching song
-    print(f"\nThe best matching song is: {best_match} with correlation {best_correlation}")
+    # Output the best matching song and some stats
+    print(f"\nBest Match: {best_match}")
+    print(f"Correlation: {best_correlation}")
+    print(f"Spread: {correlation_spread}")
 
     # Stop the timer and calculate the runtime
     end_time = time.time()
