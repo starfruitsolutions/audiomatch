@@ -29,13 +29,13 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python3 audiomatch.py <path_to_clip> <path_to_audio_folder>
+python3 audiomatch.py [-h] [--sample-rate SAMPLE_RATE] clip_file song_folder
 ```
 
 ### Example
 
 ```bash
-python3 audiomatch.py clip-1.wav potential/
+python3 audiomatch.py clip-1.wav potential
 ```
 
 ## Output

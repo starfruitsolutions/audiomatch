@@ -47,7 +47,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Compare audio sample to multiple songs in a folder using cross-correlation.")
     parser.add_argument('clip_file', type=str, help="Path to the audio clip file (wav, mp3)")
     parser.add_argument('song_folder', type=str, help="Path to the folder containing potential songs")
-    parser.add_argument('--sample_rate', type=int, default=2000, help="Sample rate for audio processing")
+    parser.add_argument('--sample-rate', type=int, default=2000, help="Sample rate for audio processing")
 
     args = parser.parse_args()
 
