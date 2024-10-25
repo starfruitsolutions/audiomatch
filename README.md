@@ -31,6 +31,9 @@ pip install -r requirements.txt
 ```bash
 python3 audiomatch.py [-h] [--sample-rate SAMPLE_RATE] clip_file song_folder
 ```
+Clip File: The file you want to find a match for.
+Song folder: A folder containing files you want to match against.
+Sample rate: The default sample rate is 2000. Using a higher sample rate will increase accuracy, but take longer.
 
 ### Example
 
