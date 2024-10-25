@@ -7,7 +7,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 # Function to load audio
-def load_audio(file_path, sr=500):
+def load_audio(file_path, sr=2000):
     audio, sr = librosa.load(file_path, sr=sr, dtype='float32')
     return audio, sr
 
